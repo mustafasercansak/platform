@@ -1,0 +1,2010 @@
+{
+  "version": 4,
+  "terraform_version": "1.14.5",
+  "serial": 103,
+  "lineage": "1765b83d-b241-ac79-1420-70d38c3b9f4e",
+  "outputs": {
+    "dashboard_token": {
+      "value": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ii1kajlmc2U0bHFaYlEzNTlnQzljMHA4VkpFZHJITjRYalBGOEhITlVJZnMifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJkYXNoYm9hcmQtYWRtaW4tdG9rZW4iLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGFzaGJvYXJkLWFkbWluIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiNWE3NGZkNzctZWM1MC00MzEzLTg3MWItZDg1N2Q0ZGEwMzM5Iiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOmRhc2hib2FyZC1hZG1pbiJ9.iqPuIUwVJgnG9HtLStWI1twlFURSzAU7NAmh42jJ12XD-XPanFLxZ4qbLbrBw4GPvWd7kJiZjwNGYGrko6b3RdUISuz_hkk3S0dt8ZnajCC1Ou33P32u6NKA7VvAD72eLz-H5Y3vM9l0bL_9ftJNgU0uyPPXhmBQ8kWmTGxfNAqoacHdaOXrGDuG533TGa--Gkorljd_VRXTSdlaoHgJ2TGjI6_raO_a6fwKssK0Pfa45Iv1kh4LEV8rhQfK_gdtyysxT5ZN7TUddpjwW2nmAtXCi1_NVLzI-rNeMg-Gc7ZfU3Dv5JCUVOBP350I_XckP2WxcPV7Dh8oUieQdxAczg",
+      "type": "string",
+      "sensitive": true
+    },
+    "passwords": {
+      "value": {
+        "admin_pass": "RMDCQl5pDkBzDWyJDqsgCXjr",
+        "bootstrap_password": "TIOi9bsPwxes0Qk6HVcUaHmm",
+        "bootstrap_token": "OZdzj8BNaFNEfUAHGQEC1PX1y2cDSpZXUJDXNIH09UqRWk6i1WHhoGBgwCZy",
+        "devRootToken": "ZBUJae0yXQNkfBJ123J7KQYJpzM2G82QDIyD",
+        "gitea_admin": "q6Wkq7vjYvv2xsUZ7ogBbZA4",
+        "grafana_admin": "8zibOWrlyH008YGcL3YZd8ZK",
+        "pg_pass": "uLpbtgqCUUyKtu2JyufjSQxToa4VA0ChsMWk",
+        "secret_key": "cHZGJX7s8LLXMA92nMj60bWIaBczPFXbwqyU0cmdk9kvIoIosspIU9K2kUg9",
+        "vault_root": "JUZfjRSyGkL2Cz3cCY0fsqjFwmk2aSnYmMxr"
+      },
+      "type": [
+        "object",
+        {
+          "admin_pass": "string",
+          "bootstrap_password": "string",
+          "bootstrap_token": "string",
+          "devRootToken": "string",
+          "gitea_admin": "string",
+          "grafana_admin": "string",
+          "pg_pass": "string",
+          "secret_key": "string",
+          "vault_root": "string"
+        }
+      ],
+      "sensitive": true
+    }
+  },
+  "resources": [
+    {
+      "mode": "data",
+      "type": "authentik_flow",
+      "name": "default_authorization",
+      "provider": "provider[\"registry.terraform.io/goauthentik/authentik\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "authentication": "require_authenticated",
+            "designation": "authorization",
+            "id": "1f375f9d-c0bf-4d7f-a8ab-1407483f2919",
+            "name": "Authorize Application",
+            "slug": "default-provider-authorization-implicit-consent",
+            "title": "Redirecting to %(app)s"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "authentik_flow",
+      "name": "default_invalidation",
+      "provider": "provider[\"registry.terraform.io/goauthentik/authentik\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "authentication": "none",
+            "designation": "invalidation",
+            "id": "905108ec-ccf3-4103-a67a-d5e1c675d382",
+            "name": "Logged out of application",
+            "slug": "default-provider-invalidation-flow",
+            "title": "You've logged out of %(app)s."
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "authentik_application",
+      "name": "apps",
+      "provider": "provider[\"registry.terraform.io/goauthentik/authentik\"]",
+      "instances": [
+        {
+          "index_key": "gitea",
+          "schema_version": 0,
+          "attributes": {
+            "backchannel_providers": [],
+            "group": "",
+            "id": "gitea",
+            "meta_description": "",
+            "meta_icon": "",
+            "meta_launch_url": "http://192.168.137.11:30300",
+            "meta_publisher": "",
+            "name": "Gitea",
+            "open_in_new_tab": false,
+            "policy_engine_mode": "any",
+            "protocol_provider": 6,
+            "slug": "gitea",
+            "uuid": "c3ec524f-5608-4075-9801-0ca0eb58656c"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "grafana",
+          "schema_version": 0,
+          "attributes": {
+            "backchannel_providers": [],
+            "group": "",
+            "id": "grafana",
+            "meta_description": "",
+            "meta_icon": "",
+            "meta_launch_url": "http://192.168.137.11:30301",
+            "meta_publisher": "",
+            "name": "Grafana",
+            "open_in_new_tab": false,
+            "policy_engine_mode": "any",
+            "protocol_provider": 5,
+            "slug": "grafana",
+            "uuid": "5e7e0547-0cde-4c88-a14d-9a81289aa605"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "portainer",
+          "schema_version": 0,
+          "attributes": {
+            "backchannel_providers": [],
+            "group": "",
+            "id": "portainer",
+            "meta_description": "",
+            "meta_icon": "",
+            "meta_launch_url": "http://192.168.137.11:30303",
+            "meta_publisher": "",
+            "name": "Portainer",
+            "open_in_new_tab": false,
+            "policy_engine_mode": "any",
+            "protocol_provider": 2,
+            "slug": "portainer",
+            "uuid": "bf8acf08-fc69-43bf-821c-b9cee1d07ed2"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "traefik",
+          "schema_version": 0,
+          "attributes": {
+            "backchannel_providers": [],
+            "group": "",
+            "id": "traefik",
+            "meta_description": "",
+            "meta_icon": "",
+            "meta_launch_url": "http://192.168.137.11:30304",
+            "meta_publisher": "",
+            "name": "Traefik",
+            "open_in_new_tab": false,
+            "policy_engine_mode": "any",
+            "protocol_provider": 4,
+            "slug": "traefik",
+            "uuid": "12d3e581-9773-4fa7-a458-8e61cb7c8702"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "vault",
+          "schema_version": 0,
+          "attributes": {
+            "backchannel_providers": [],
+            "group": "",
+            "id": "vault",
+            "meta_description": "",
+            "meta_icon": "",
+            "meta_launch_url": "http://192.168.137.11:30820",
+            "meta_publisher": "",
+            "name": "Vault",
+            "open_in_new_tab": false,
+            "policy_engine_mode": "any",
+            "protocol_provider": 3,
+            "slug": "vault",
+            "uuid": "7285bc7c-216e-4a47-9a19-19ca1c432fdf"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "wikijs",
+          "schema_version": 0,
+          "attributes": {
+            "backchannel_providers": [],
+            "group": "",
+            "id": "wikijs",
+            "meta_description": "",
+            "meta_icon": "",
+            "meta_launch_url": "http://192.168.137.11:30302",
+            "meta_publisher": "",
+            "name": "Wiki.js",
+            "open_in_new_tab": false,
+            "policy_engine_mode": "any",
+            "protocol_provider": 1,
+            "slug": "wikijs",
+            "uuid": "9dac4d28-7bbb-4a77-ada7-1886918b4eb7"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "authentik_group",
+      "name": "groups",
+      "provider": "provider[\"registry.terraform.io/goauthentik/authentik\"]",
+      "instances": [
+        {
+          "index_key": "admins",
+          "schema_version": 0,
+          "attributes": {
+            "attributes": "{}",
+            "id": "170a2d1f-42b1-4589-8b38-936a4fd4fdf5",
+            "is_superuser": true,
+            "name": "admins",
+            "parents": [],
+            "roles": [],
+            "users": [
+              7
+            ]
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "developers",
+          "schema_version": 0,
+          "attributes": {
+            "attributes": "{}",
+            "id": "14a2df5d-0321-4b84-a108-1e4a6899057f",
+            "is_superuser": false,
+            "name": "developers",
+            "parents": [],
+            "roles": [],
+            "users": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "vault_users",
+          "schema_version": 0,
+          "attributes": {
+            "attributes": "{}",
+            "id": "1ab3da46-f705-4057-92cd-2326372958b2",
+            "is_superuser": false,
+            "name": "vault-users",
+            "parents": [],
+            "roles": [],
+            "users": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "viewers",
+          "schema_version": 0,
+          "attributes": {
+            "attributes": "{}",
+            "id": "d503b036-6413-4161-bcb6-ca709d4c326e",
+            "is_superuser": false,
+            "name": "viewers",
+            "parents": [],
+            "roles": [],
+            "users": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "random_password.all"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "authentik_policy_binding",
+      "name": "app_groups",
+      "provider": "provider[\"registry.terraform.io/goauthentik/authentik\"]",
+      "instances": [
+        {
+          "index_key": "gitea-admins",
+          "schema_version": 0,
+          "attributes": {
+            "enabled": true,
+            "failure_result": false,
+            "group": "170a2d1f-42b1-4589-8b38-936a4fd4fdf5",
+            "id": "0edc9ab2-10bf-42db-8759-476da9467467",
+            "negate": false,
+            "order": 0,
+            "policy": "",
+            "target": "c3ec524f-5608-4075-9801-0ca0eb58656c",
+            "timeout": 30,
+            "user": 0
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_application.apps",
+            "authentik_group.groups",
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "gitea-developers",
+          "schema_version": 0,
+          "attributes": {
+            "enabled": true,
+            "failure_result": false,
+            "group": "14a2df5d-0321-4b84-a108-1e4a6899057f",
+            "id": "3d148caa-0b09-4fed-acf0-f6d3c5e9244d",
+            "negate": false,
+            "order": 0,
+            "policy": "",
+            "target": "c3ec524f-5608-4075-9801-0ca0eb58656c",
+            "timeout": 30,
+            "user": 0
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_application.apps",
+            "authentik_group.groups",
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "grafana-admins",
+          "schema_version": 0,
+          "attributes": {
+            "enabled": true,
+            "failure_result": false,
+            "group": "170a2d1f-42b1-4589-8b38-936a4fd4fdf5",
+            "id": "c5d3b451-2c7e-4eb9-8d9a-4604363b2608",
+            "negate": false,
+            "order": 0,
+            "policy": "",
+            "target": "5e7e0547-0cde-4c88-a14d-9a81289aa605",
+            "timeout": 30,
+            "user": 0
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_application.apps",
+            "authentik_group.groups",
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "grafana-developers",
+          "schema_version": 0,
+          "attributes": {
+            "enabled": true,
+            "failure_result": false,
+            "group": "14a2df5d-0321-4b84-a108-1e4a6899057f",
+            "id": "851eb3a3-bd2e-49c9-8b82-3bca5a9315f4",
+            "negate": false,
+            "order": 0,
+            "policy": "",
+            "target": "5e7e0547-0cde-4c88-a14d-9a81289aa605",
+            "timeout": 30,
+            "user": 0
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_application.apps",
+            "authentik_group.groups",
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "grafana-viewers",
+          "schema_version": 0,
+          "attributes": {
+            "enabled": true,
+            "failure_result": false,
+            "group": "d503b036-6413-4161-bcb6-ca709d4c326e",
+            "id": "cf9e8628-4efe-4ed4-a36e-e6795e95d03d",
+            "negate": false,
+            "order": 0,
+            "policy": "",
+            "target": "5e7e0547-0cde-4c88-a14d-9a81289aa605",
+            "timeout": 30,
+            "user": 0
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_application.apps",
+            "authentik_group.groups",
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "portainer-admins",
+          "schema_version": 0,
+          "attributes": {
+            "enabled": true,
+            "failure_result": false,
+            "group": "170a2d1f-42b1-4589-8b38-936a4fd4fdf5",
+            "id": "af5b0134-467d-4df2-be7f-5215580b4f99",
+            "negate": false,
+            "order": 0,
+            "policy": "",
+            "target": "bf8acf08-fc69-43bf-821c-b9cee1d07ed2",
+            "timeout": 30,
+            "user": 0
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_application.apps",
+            "authentik_group.groups",
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "traefik-admins",
+          "schema_version": 0,
+          "attributes": {
+            "enabled": true,
+            "failure_result": false,
+            "group": "170a2d1f-42b1-4589-8b38-936a4fd4fdf5",
+            "id": "c1ab17a3-bb14-4f0b-8bb4-99d93ec996c4",
+            "negate": false,
+            "order": 0,
+            "policy": "",
+            "target": "12d3e581-9773-4fa7-a458-8e61cb7c8702",
+            "timeout": 30,
+            "user": 0
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_application.apps",
+            "authentik_group.groups",
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "vault-admins",
+          "schema_version": 0,
+          "attributes": {
+            "enabled": true,
+            "failure_result": false,
+            "group": "170a2d1f-42b1-4589-8b38-936a4fd4fdf5",
+            "id": "1fa66471-5e50-4b9c-928c-8b09b22b9206",
+            "negate": false,
+            "order": 0,
+            "policy": "",
+            "target": "7285bc7c-216e-4a47-9a19-19ca1c432fdf",
+            "timeout": 30,
+            "user": 0
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_application.apps",
+            "authentik_group.groups",
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "vault-vault_users",
+          "schema_version": 0,
+          "attributes": {
+            "enabled": true,
+            "failure_result": false,
+            "group": "1ab3da46-f705-4057-92cd-2326372958b2",
+            "id": "fc516eec-a02e-490c-936f-e80784f526eb",
+            "negate": false,
+            "order": 0,
+            "policy": "",
+            "target": "7285bc7c-216e-4a47-9a19-19ca1c432fdf",
+            "timeout": 30,
+            "user": 0
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_application.apps",
+            "authentik_group.groups",
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "wikijs-admins",
+          "schema_version": 0,
+          "attributes": {
+            "enabled": true,
+            "failure_result": false,
+            "group": "170a2d1f-42b1-4589-8b38-936a4fd4fdf5",
+            "id": "404778f2-91ec-49e5-929d-83b77c6db5b6",
+            "negate": false,
+            "order": 0,
+            "policy": "",
+            "target": "9dac4d28-7bbb-4a77-ada7-1886918b4eb7",
+            "timeout": 30,
+            "user": 0
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_application.apps",
+            "authentik_group.groups",
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "wikijs-developers",
+          "schema_version": 0,
+          "attributes": {
+            "enabled": true,
+            "failure_result": false,
+            "group": "14a2df5d-0321-4b84-a108-1e4a6899057f",
+            "id": "30483d8c-0287-49fe-9d98-68c40e7e2fa8",
+            "negate": false,
+            "order": 0,
+            "policy": "",
+            "target": "9dac4d28-7bbb-4a77-ada7-1886918b4eb7",
+            "timeout": 30,
+            "user": 0
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_application.apps",
+            "authentik_group.groups",
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "wikijs-viewers",
+          "schema_version": 0,
+          "attributes": {
+            "enabled": true,
+            "failure_result": false,
+            "group": "d503b036-6413-4161-bcb6-ca709d4c326e",
+            "id": "2d03ca2e-c638-4905-8079-71b231826a00",
+            "negate": false,
+            "order": 0,
+            "policy": "",
+            "target": "9dac4d28-7bbb-4a77-ada7-1886918b4eb7",
+            "timeout": 30,
+            "user": 0
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_application.apps",
+            "authentik_group.groups",
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "authentik_provider_oauth2",
+      "name": "apps",
+      "provider": "provider[\"registry.terraform.io/goauthentik/authentik\"]",
+      "instances": [
+        {
+          "index_key": "gitea",
+          "schema_version": 0,
+          "attributes": {
+            "access_code_validity": "minutes=1",
+            "access_token_validity": "minutes=10",
+            "allowed_redirect_uris": [
+              {
+                "matching_mode": "strict",
+                "url": "http://192.168.137.11:30300/user/oauth2/authentik/callback"
+              }
+            ],
+            "authentication_flow": "",
+            "authorization_flow": "1f375f9d-c0bf-4d7f-a8ab-1407483f2919",
+            "client_id": "gitea",
+            "client_secret": "i1tfSutKOSnN3sw7ifDwK0rz4sbGELVmeCDeGHThquoKMVZvC41l0Jj9iK26w3vKAW3AFxxrc2aJiYfpIhoD97A8wjVP53VAbXfZMdn0Gte2imrX41TOEC6vLrbI3v9u",
+            "client_type": "confidential",
+            "encryption_key": "",
+            "id": "6",
+            "include_claims_in_id_token": true,
+            "invalidation_flow": "905108ec-ccf3-4103-a67a-d5e1c675d382",
+            "issuer_mode": "per_provider",
+            "jwks_sources": null,
+            "jwt_federation_providers": [],
+            "jwt_federation_sources": [],
+            "logout_method": "backchannel",
+            "logout_uri": "",
+            "name": "Gitea",
+            "property_mappings": [],
+            "refresh_token_threshold": "seconds=0",
+            "refresh_token_validity": "days=30",
+            "signing_key": "",
+            "sub_mode": "hashed_user_id"
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "client_secret"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "grafana",
+          "schema_version": 0,
+          "attributes": {
+            "access_code_validity": "minutes=1",
+            "access_token_validity": "minutes=10",
+            "allowed_redirect_uris": [
+              {
+                "matching_mode": "strict",
+                "url": "http://192.168.137.11:30301/login/generic_oauth"
+              }
+            ],
+            "authentication_flow": "",
+            "authorization_flow": "1f375f9d-c0bf-4d7f-a8ab-1407483f2919",
+            "client_id": "grafana",
+            "client_secret": "8iWt033IP6kbfKcpkFS4XguXY51rBKEcVxkbEEUhEJp5RRBfKGzXZY3d0k8iydAVlAwEGWrp8GJzTqpyWfBSMRZyukgV5Y57sxwiOYXPDctmbRqNefX5nuFrGz21lRqa",
+            "client_type": "confidential",
+            "encryption_key": "",
+            "id": "5",
+            "include_claims_in_id_token": true,
+            "invalidation_flow": "905108ec-ccf3-4103-a67a-d5e1c675d382",
+            "issuer_mode": "per_provider",
+            "jwks_sources": null,
+            "jwt_federation_providers": [],
+            "jwt_federation_sources": [],
+            "logout_method": "backchannel",
+            "logout_uri": "",
+            "name": "Grafana",
+            "property_mappings": [],
+            "refresh_token_threshold": "seconds=0",
+            "refresh_token_validity": "days=30",
+            "signing_key": "",
+            "sub_mode": "hashed_user_id"
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "client_secret"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "portainer",
+          "schema_version": 0,
+          "attributes": {
+            "access_code_validity": "minutes=1",
+            "access_token_validity": "minutes=10",
+            "allowed_redirect_uris": [
+              {
+                "matching_mode": "strict",
+                "url": "http://192.168.137.11:30303/"
+              }
+            ],
+            "authentication_flow": "",
+            "authorization_flow": "1f375f9d-c0bf-4d7f-a8ab-1407483f2919",
+            "client_id": "portainer",
+            "client_secret": "QwlvExVDM5dpI7vT8B8ixUl6fzPLLnOVVubcDPnifBzFtsDsH0nbrMCjMQjePoaAqotXKbTZSCsKMhMre1AfvvSwBeW1NlK7oo8mdlauPhF2AY76RPPVQbumYKWkBA7Y",
+            "client_type": "confidential",
+            "encryption_key": "",
+            "id": "2",
+            "include_claims_in_id_token": true,
+            "invalidation_flow": "905108ec-ccf3-4103-a67a-d5e1c675d382",
+            "issuer_mode": "per_provider",
+            "jwks_sources": null,
+            "jwt_federation_providers": [],
+            "jwt_federation_sources": [],
+            "logout_method": "backchannel",
+            "logout_uri": "",
+            "name": "Portainer",
+            "property_mappings": [],
+            "refresh_token_threshold": "seconds=0",
+            "refresh_token_validity": "days=30",
+            "signing_key": "",
+            "sub_mode": "hashed_user_id"
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "client_secret"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "traefik",
+          "schema_version": 0,
+          "attributes": {
+            "access_code_validity": "minutes=1",
+            "access_token_validity": "minutes=10",
+            "allowed_redirect_uris": [
+              {
+                "matching_mode": "strict",
+                "url": "http://192.168.137.11:30304/callback"
+              }
+            ],
+            "authentication_flow": "",
+            "authorization_flow": "1f375f9d-c0bf-4d7f-a8ab-1407483f2919",
+            "client_id": "traefik",
+            "client_secret": "Tc2O5uu2CEeA7o2SKi9R6tarcb1r7zzebGM7YImD1WyP1lIEyilaHbMb04DImpnjprHWLXSwjf2Mj3UmGlSvWpxplLVzh2lcBnXHKbK25zLT5wtXr6Ytm38CVWpHj4Yi",
+            "client_type": "confidential",
+            "encryption_key": "",
+            "id": "4",
+            "include_claims_in_id_token": true,
+            "invalidation_flow": "905108ec-ccf3-4103-a67a-d5e1c675d382",
+            "issuer_mode": "per_provider",
+            "jwks_sources": null,
+            "jwt_federation_providers": [],
+            "jwt_federation_sources": [],
+            "logout_method": "backchannel",
+            "logout_uri": "",
+            "name": "Traefik",
+            "property_mappings": [],
+            "refresh_token_threshold": "seconds=0",
+            "refresh_token_validity": "days=30",
+            "signing_key": "",
+            "sub_mode": "hashed_user_id"
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "client_secret"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "vault",
+          "schema_version": 0,
+          "attributes": {
+            "access_code_validity": "minutes=1",
+            "access_token_validity": "minutes=10",
+            "allowed_redirect_uris": [
+              {
+                "matching_mode": "strict",
+                "url": "http://192.168.137.11:30820/ui/vault/auth/oidc/oidc/callback"
+              }
+            ],
+            "authentication_flow": "",
+            "authorization_flow": "1f375f9d-c0bf-4d7f-a8ab-1407483f2919",
+            "client_id": "vault",
+            "client_secret": "ZD5FFDa3KItQbqQQzVfmqmwyNFClFnVMT346vafgdqsKygcyBO7h8unQYyxpSbWRa7TDSXok5k28dZTHhd6qkleS3h1z3fJVpRNJWFzOkkdLcRZ8qShHrrjnc3wEQcPS",
+            "client_type": "confidential",
+            "encryption_key": "",
+            "id": "3",
+            "include_claims_in_id_token": true,
+            "invalidation_flow": "905108ec-ccf3-4103-a67a-d5e1c675d382",
+            "issuer_mode": "per_provider",
+            "jwks_sources": null,
+            "jwt_federation_providers": [],
+            "jwt_federation_sources": [],
+            "logout_method": "backchannel",
+            "logout_uri": "",
+            "name": "Vault",
+            "property_mappings": [],
+            "refresh_token_threshold": "seconds=0",
+            "refresh_token_validity": "days=30",
+            "signing_key": "",
+            "sub_mode": "hashed_user_id"
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "client_secret"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        },
+        {
+          "index_key": "wikijs",
+          "schema_version": 0,
+          "attributes": {
+            "access_code_validity": "minutes=1",
+            "access_token_validity": "minutes=10",
+            "allowed_redirect_uris": [
+              {
+                "matching_mode": "strict",
+                "url": "http://192.168.137.11:30302/login/callback"
+              }
+            ],
+            "authentication_flow": "",
+            "authorization_flow": "1f375f9d-c0bf-4d7f-a8ab-1407483f2919",
+            "client_id": "wikijs",
+            "client_secret": "4Z60sopg41SiSap22ORuOKE7cxpgj2gpBFq6PJuxul2kvk34FR8vraJ1Tq2djd0JOTxzCUONSSHuDlmNCX9eBeCyvLLVDJ1ATLKD8qamx5A0rpfDlrGzWT3qq79trYys",
+            "client_type": "confidential",
+            "encryption_key": "",
+            "id": "1",
+            "include_claims_in_id_token": true,
+            "invalidation_flow": "905108ec-ccf3-4103-a67a-d5e1c675d382",
+            "issuer_mode": "per_provider",
+            "jwks_sources": null,
+            "jwt_federation_providers": [],
+            "jwt_federation_sources": [],
+            "logout_method": "backchannel",
+            "logout_uri": "",
+            "name": "Wiki.js",
+            "property_mappings": [],
+            "refresh_token_threshold": "seconds=0",
+            "refresh_token_validity": "days=30",
+            "signing_key": "",
+            "sub_mode": "hashed_user_id"
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "client_secret"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "random_password.all"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "authentik_user",
+      "name": "users",
+      "provider": "provider[\"registry.terraform.io/goauthentik/authentik\"]",
+      "instances": [
+        {
+          "index_key": "admin",
+          "schema_version": 0,
+          "attributes": {
+            "attributes": "{}",
+            "email": "admin@platform.local",
+            "groups": [
+              "170a2d1f-42b1-4589-8b38-936a4fd4fdf5"
+            ],
+            "id": "7",
+            "is_active": true,
+            "name": "Admin",
+            "password": "RMDCQl5pDkBzDWyJDqsgCXjr",
+            "path": "users",
+            "type": "internal",
+            "username": "admin"
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "password"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_group.groups",
+            "random_password.all"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "kubernetes_cluster_role_binding_v1",
+      "name": "dashboard_admin",
+      "provider": "provider[\"registry.terraform.io/hashicorp/kubernetes\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "dashboard-admin",
+            "metadata": [
+              {
+                "annotations": {},
+                "generate_name": "",
+                "generation": 0,
+                "labels": {},
+                "name": "dashboard-admin",
+                "resource_version": "2681",
+                "uid": "3b68e940-9331-4af0-bdc9-3fb0405b9e08"
+              }
+            ],
+            "role_ref": [
+              {
+                "api_group": "rbac.authorization.k8s.io",
+                "kind": "ClusterRole",
+                "name": "cluster-admin"
+              }
+            ],
+            "subject": [
+              {
+                "api_group": "",
+                "kind": "ServiceAccount",
+                "name": "dashboard-admin",
+                "namespace": "kube-system"
+              }
+            ]
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 1,
+          "identity": {
+            "api_version": "rbac.authorization.k8s.io/v1",
+            "kind": "ClusterRoleBinding",
+            "name": "dashboard-admin"
+          },
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "kubernetes_secret_v1",
+      "name": "dashboard_token",
+      "provider": "provider[\"registry.terraform.io/hashicorp/kubernetes\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "binary_data": null,
+            "binary_data_wo": null,
+            "binary_data_wo_revision": null,
+            "data": {
+              "ca.crt": "-----BEGIN CERTIFICATE-----\nMIIDDzCCAfegAwIBAgIUapr1SWQfFvbPH7DnEmxT96ScB9IwDQYJKoZIhvcNAQEL\nBQAwFzEVMBMGA1UEAwwMMTAuMTUyLjE4My4xMB4XDTI2MDMxNTA1MjQwN1oXDTM2\nMDMxMjA1MjQwN1owFzEVMBMGA1UEAwwMMTAuMTUyLjE4My4xMIIBIjANBgkqhkiG\n9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwHxmsL//AEWpgxW05X0HM9eL5Dd7OrbwZctK\nO8a84/wr0H/D+srFTRAJVYo5goXeRhf7gxIEbBnxxqI7qC9GOkH3vlU6FdoBlmro\n2tz22k+BDYdq+2Srmlt818aGZgOuRg75MOlFey4DTDMmVSwyntVCAmS8kP/A0MD5\n15QLGE26CxAyy3GVwVUXc2UOgJRovGiJk2ywiQUwhTj+AvNVpSY5lEpK+QMJdvpo\nnWc9YvoYejYTHBIB9c+/+eB5AQj3Q/8Y9Tpp1s/T4OU7Ygp1CCE66KwiljNJ3hmO\nqgaH35WGWLgmX0qG7106aV0uXzh/15zI8rdTkzQ07EW5Pie/HQIDAQABo1MwUTAd\nBgNVHQ4EFgQUjK4WXXQzRCGswPswbRWiwvk/K+MwHwYDVR0jBBgwFoAUjK4WXXQz\nRCGswPswbRWiwvk/K+MwDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOC\nAQEAikzTxd1TiWw0DsrN7svBpC7eKVrPW6xdSPLsIVUscHYqDRt4OSZ6roa+JGqU\nasJe6ax/18pStUtK4gquinzN2DaD2lhRF6gsZGRLYJ2UIdYChfNgNqbRJh3NI1Sz\nfj906LKA0YGf2JS6iuo+HqstDU9nMtCUX99rBSfK0duJ5Q02tUuI+vBzOYAR4bs9\nkoxxrGEexI7nHtClYEa0HnjHVXvCBV1NvIretAkUnIHYDyV1YvsSbWOuYcrp/+lg\nHdME77DcDzb0v9Cp+PEXqPaxVQ7YIxAtqCe5Y+ps8bmPi1Ljm+QAH2l5p7Cf3Ovb\nG/WbZZMl53h9K8JCT7fnCvvGkg==\n-----END CERTIFICATE-----\n",
+              "namespace": "kube-system",
+              "token": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ii1kajlmc2U0bHFaYlEzNTlnQzljMHA4VkpFZHJITjRYalBGOEhITlVJZnMifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJkYXNoYm9hcmQtYWRtaW4tdG9rZW4iLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGFzaGJvYXJkLWFkbWluIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiNWE3NGZkNzctZWM1MC00MzEzLTg3MWItZDg1N2Q0ZGEwMzM5Iiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOmRhc2hib2FyZC1hZG1pbiJ9.iqPuIUwVJgnG9HtLStWI1twlFURSzAU7NAmh42jJ12XD-XPanFLxZ4qbLbrBw4GPvWd7kJiZjwNGYGrko6b3RdUISuz_hkk3S0dt8ZnajCC1Ou33P32u6NKA7VvAD72eLz-H5Y3vM9l0bL_9ftJNgU0uyPPXhmBQ8kWmTGxfNAqoacHdaOXrGDuG533TGa--Gkorljd_VRXTSdlaoHgJ2TGjI6_raO_a6fwKssK0Pfa45Iv1kh4LEV8rhQfK_gdtyysxT5ZN7TUddpjwW2nmAtXCi1_NVLzI-rNeMg-Gc7ZfU3Dv5JCUVOBP350I_XckP2WxcPV7Dh8oUieQdxAczg"
+            },
+            "data_wo": null,
+            "data_wo_revision": null,
+            "id": "kube-system/dashboard-admin-token",
+            "immutable": false,
+            "metadata": [
+              {
+                "annotations": {
+                  "kubernetes.io/service-account.name": "dashboard-admin"
+                },
+                "generate_name": "",
+                "generation": 0,
+                "labels": {},
+                "name": "dashboard-admin-token",
+                "namespace": "kube-system",
+                "resource_version": "4031",
+                "uid": "8c794f8e-e386-4477-b6eb-f48308d7fcce"
+              }
+            ],
+            "timeouts": null,
+            "type": "kubernetes.io/service-account-token",
+            "wait_for_service_account_token": true
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "binary_data"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "data"
+              }
+            ]
+          ],
+          "identity_schema_version": 1,
+          "identity": {
+            "api_version": "v1",
+            "kind": "Secret",
+            "name": "dashboard-admin-token",
+            "namespace": "kube-system"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMH19",
+          "dependencies": [
+            "kubernetes_service_account_v1.dashboard_admin"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "kubernetes_service_account_v1",
+      "name": "dashboard_admin",
+      "provider": "provider[\"registry.terraform.io/hashicorp/kubernetes\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "automount_service_account_token": true,
+            "default_secret_name": "",
+            "id": "kube-system/dashboard-admin",
+            "image_pull_secret": [],
+            "metadata": [
+              {
+                "annotations": {},
+                "generate_name": "",
+                "generation": 0,
+                "labels": {},
+                "name": "dashboard-admin",
+                "namespace": "kube-system",
+                "resource_version": "2680",
+                "uid": "5a74fd77-ec50-4313-871b-d857d4da0339"
+              }
+            ],
+            "secret": [],
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 1,
+          "identity": {
+            "api_version": "v1",
+            "kind": "ServiceAccount",
+            "name": "dashboard-admin",
+            "namespace": "kube-system"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMH19"
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "random_password",
+      "name": "all",
+      "provider": "provider[\"registry.terraform.io/hashicorp/random\"]",
+      "instances": [
+        {
+          "index_key": "admin_pass",
+          "schema_version": 3,
+          "attributes": {
+            "bcrypt_hash": "$2a$10$qC7zSnoMXJMI9vjN0HNa5enXjbZwXNx3ukZjuskYAij.7yUnAsYqK",
+            "id": "none",
+            "keepers": null,
+            "length": 24,
+            "lower": true,
+            "min_lower": 0,
+            "min_numeric": 0,
+            "min_special": 0,
+            "min_upper": 0,
+            "number": true,
+            "numeric": true,
+            "override_special": null,
+            "result": "RMDCQl5pDkBzDWyJDqsgCXjr",
+            "special": false,
+            "upper": true
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "bcrypt_hash"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "result"
+              }
+            ]
+          ],
+          "identity_schema_version": 0
+        },
+        {
+          "index_key": "bootstrap_password",
+          "schema_version": 3,
+          "attributes": {
+            "bcrypt_hash": "$2a$10$vWveLqa8WdIMhQz0nxr/UenAW3oUGuL5SnOT7bMFl4ZYfY0ryNM3e",
+            "id": "none",
+            "keepers": null,
+            "length": 24,
+            "lower": true,
+            "min_lower": 0,
+            "min_numeric": 0,
+            "min_special": 0,
+            "min_upper": 0,
+            "number": true,
+            "numeric": true,
+            "override_special": null,
+            "result": "TIOi9bsPwxes0Qk6HVcUaHmm",
+            "special": false,
+            "upper": true
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "bcrypt_hash"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "result"
+              }
+            ]
+          ],
+          "identity_schema_version": 0
+        },
+        {
+          "index_key": "bootstrap_token",
+          "schema_version": 3,
+          "attributes": {
+            "bcrypt_hash": "$2a$10$eHHSkNyW4Ce0keXFenK9ie6FZrJbxwmesNszJ2kvlxT3Qk/uCKZ3a",
+            "id": "none",
+            "keepers": null,
+            "length": 60,
+            "lower": true,
+            "min_lower": 0,
+            "min_numeric": 0,
+            "min_special": 0,
+            "min_upper": 0,
+            "number": true,
+            "numeric": true,
+            "override_special": null,
+            "result": "OZdzj8BNaFNEfUAHGQEC1PX1y2cDSpZXUJDXNIH09UqRWk6i1WHhoGBgwCZy",
+            "special": false,
+            "upper": true
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "bcrypt_hash"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "result"
+              }
+            ]
+          ],
+          "identity_schema_version": 0
+        },
+        {
+          "index_key": "devRootToken",
+          "schema_version": 3,
+          "attributes": {
+            "bcrypt_hash": "$2a$10$yLL.N9ZtnfQjjzp6M0m4ceV35ClA/j80ALpSOFYN8o95wkKAT5kBi",
+            "id": "none",
+            "keepers": null,
+            "length": 36,
+            "lower": true,
+            "min_lower": 0,
+            "min_numeric": 0,
+            "min_special": 0,
+            "min_upper": 0,
+            "number": true,
+            "numeric": true,
+            "override_special": null,
+            "result": "ZBUJae0yXQNkfBJ123J7KQYJpzM2G82QDIyD",
+            "special": false,
+            "upper": true
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "bcrypt_hash"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "result"
+              }
+            ]
+          ],
+          "identity_schema_version": 0
+        },
+        {
+          "index_key": "gitea_admin",
+          "schema_version": 3,
+          "attributes": {
+            "bcrypt_hash": "$2a$10$kHnQ8C1bGfPFFJTA5JXBn.FpHbx.ymmfDDkSGaFBDFUJNd8WhzlQC",
+            "id": "none",
+            "keepers": null,
+            "length": 24,
+            "lower": true,
+            "min_lower": 0,
+            "min_numeric": 0,
+            "min_special": 0,
+            "min_upper": 0,
+            "number": true,
+            "numeric": true,
+            "override_special": null,
+            "result": "q6Wkq7vjYvv2xsUZ7ogBbZA4",
+            "special": false,
+            "upper": true
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "bcrypt_hash"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "result"
+              }
+            ]
+          ],
+          "identity_schema_version": 0
+        },
+        {
+          "index_key": "grafana_admin",
+          "schema_version": 3,
+          "attributes": {
+            "bcrypt_hash": "$2a$10$mKHtPf.KRt73WVjNZmki/.lRdYsh61IJLRv5um.GlYUpzaNMqTe02",
+            "id": "none",
+            "keepers": null,
+            "length": 24,
+            "lower": true,
+            "min_lower": 0,
+            "min_numeric": 0,
+            "min_special": 0,
+            "min_upper": 0,
+            "number": true,
+            "numeric": true,
+            "override_special": null,
+            "result": "8zibOWrlyH008YGcL3YZd8ZK",
+            "special": false,
+            "upper": true
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "bcrypt_hash"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "result"
+              }
+            ]
+          ],
+          "identity_schema_version": 0
+        },
+        {
+          "index_key": "pg_pass",
+          "schema_version": 3,
+          "attributes": {
+            "bcrypt_hash": "$2a$10$BFXDcBvbO2jw680fJtFa/O7Tjr/.OkdJmfRkeXIkORSw3aa2wTWpa",
+            "id": "none",
+            "keepers": null,
+            "length": 36,
+            "lower": true,
+            "min_lower": 0,
+            "min_numeric": 0,
+            "min_special": 0,
+            "min_upper": 0,
+            "number": true,
+            "numeric": true,
+            "override_special": null,
+            "result": "uLpbtgqCUUyKtu2JyufjSQxToa4VA0ChsMWk",
+            "special": false,
+            "upper": true
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "bcrypt_hash"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "result"
+              }
+            ]
+          ],
+          "identity_schema_version": 0
+        },
+        {
+          "index_key": "secret_key",
+          "schema_version": 3,
+          "attributes": {
+            "bcrypt_hash": "$2a$10$RevRI9K4avKrGpo4OMoS7.2ifklX4E1GZzcmELHwqvCBEXP7dSFQu",
+            "id": "none",
+            "keepers": null,
+            "length": 60,
+            "lower": true,
+            "min_lower": 0,
+            "min_numeric": 0,
+            "min_special": 0,
+            "min_upper": 0,
+            "number": true,
+            "numeric": true,
+            "override_special": null,
+            "result": "cHZGJX7s8LLXMA92nMj60bWIaBczPFXbwqyU0cmdk9kvIoIosspIU9K2kUg9",
+            "special": false,
+            "upper": true
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "bcrypt_hash"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "result"
+              }
+            ]
+          ],
+          "identity_schema_version": 0
+        },
+        {
+          "index_key": "vault_root",
+          "schema_version": 3,
+          "attributes": {
+            "bcrypt_hash": "$2a$10$O.wqdMJlphfQtHoG6DxmiOtumXQ.fVuI82MppQBQgrdWgHcZP.rji",
+            "id": "none",
+            "keepers": null,
+            "length": 36,
+            "lower": true,
+            "min_lower": 0,
+            "min_numeric": 0,
+            "min_special": 0,
+            "min_upper": 0,
+            "number": true,
+            "numeric": true,
+            "override_special": null,
+            "result": "JUZfjRSyGkL2Cz3cCY0fsqjFwmk2aSnYmMxr",
+            "special": false,
+            "upper": true
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "bcrypt_hash"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "result"
+              }
+            ]
+          ],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "module": "module.authentik",
+      "mode": "managed",
+      "type": "helm_release",
+      "name": "authentik",
+      "provider": "provider[\"registry.terraform.io/hashicorp/helm\"]",
+      "instances": [
+        {
+          "schema_version": 2,
+          "attributes": {
+            "atomic": false,
+            "chart": "authentik",
+            "cleanup_on_fail": false,
+            "create_namespace": true,
+            "dependency_update": false,
+            "description": null,
+            "devel": null,
+            "disable_crd_hooks": false,
+            "disable_openapi_validation": false,
+            "disable_webhooks": false,
+            "force_update": false,
+            "id": "authentik",
+            "keyring": null,
+            "lint": false,
+            "manifest": null,
+            "max_history": 0,
+            "metadata": {
+              "app_version": "2026.2.1",
+              "chart": "authentik",
+              "first_deployed": 1773552503,
+              "last_deployed": 1773552503,
+              "name": "authentik",
+              "namespace": "authentik",
+              "notes": "Run the commands below to get a kubeconfig file for authentik:\n\nKUBE_API=$(kubectl config view --minify --output jsonpath=\"{.clusters[*].cluster.server}\")\nNAMESPACE=authentik\nSECRET_NAME=$(kubectl get serviceaccount authentik -o jsonpath='{.secrets[0].name}' 2\u003e/dev/null || echo -n \"authentik\")\nKUBE_CA=$(kubectl -n $NAMESPACE get secret/$SECRET_NAME -o jsonpath='{.data.ca\\.crt}')\nKUBE_TOKEN=$(kubectl -n $NAMESPACE get secret/$SECRET_NAME -o jsonpath='{.data.token}' | base64 --decode)\n\necho \"apiVersion: v1\nkind: Config\nclusters:\n- name: default-cluster\n  cluster:\n    certificate-authority-data: ${KUBE_CA}\n    server: ${KUBE_API}\ncontexts:\n- name: default-context\n  context:\n    cluster: default-cluster\n    namespace: $NAMESPACE\n    user: authentik-user\ncurrent-context: default-context\nusers:\n- name: authentik-user\n  user:\n    token: ${KUBE_TOKEN}\"\n\n\nCHART NAME: postgresql\nCHART VERSION: 16.7.27\nAPP VERSION: 17.6.0\n\n⚠ WARNING: Since August 28th, 2025, only a limited subset of images/charts are available for free.\n    Subscribe to Bitnami Secure Images to receive continued support and security updates.\n    More info at https://bitnami.com and https://github.com/bitnami/containers/issues/83267\n\n** Please be patient while the chart is being deployed **\n\nPostgreSQL can be accessed via port 5432 on the following DNS names from within your cluster:\n\n    authentik-postgresql.authentik.svc.cluster.local - Read/Write connection\n\nTo get the password for \"postgres\" run:\n\n    export POSTGRES_ADMIN_PASSWORD=$(kubectl get secret --namespace authentik authentik-postgresql -o jsonpath=\"{.data.postgres-password}\" | base64 -d)\n\nTo get the password for \"authentik\" run:\n\n    export POSTGRES_PASSWORD=$(kubectl get secret --namespace authentik authentik-postgresql -o jsonpath=\"{.data.password}\" | base64 -d)\n\nTo connect to your database run the following command:\n\n    kubectl run authentik-postgresql-client --rm --tty -i --restart='Never' --namespace authentik --image docker.io/library/postgres:17.9-bookworm --env=\"PGPASSWORD=$POSTGRES_PASSWORD\" \\\n      --command -- psql --host authentik-postgresql -U authentik -d authentik -p 5432\n\n    \u003e NOTE: If you access the container using bash, make sure that you execute \"/opt/bitnami/scripts/postgresql/entrypoint.sh /bin/bash\" in order to avoid the error \"psql: local user with ID 1001} does not exist\"\n\nTo connect to your database from outside the cluster execute the following commands:\n\n    kubectl port-forward --namespace authentik svc/authentik-postgresql 5432:5432 \u0026\n    PGPASSWORD=\"$POSTGRES_PASSWORD\" psql --host 127.0.0.1 -U authentik -d authentik -p 5432\n\nWARNING: The configured password will be ignored on new installation in case when previous PostgreSQL release was deleted through the helm command. In that case, old PVC will have an old password, and setting it through helm won't take effect. Deleting persistent volumes (PVs) will solve the issue.\n\nWARNING: There are \"resources\" sections in the chart not set. Using \"resourcesPreset\" is not recommended for production. For production installations, please set the following values according to your workload needs:\n  - primary.resources\n  - readReplicas.resources\n+info https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/\n\n⚠ SECURITY WARNING: Original containers have been substituted. This Helm chart was designed, tested, and validated on multiple platforms using a specific set of Bitnami and Tanzu Application Catalog containers. Substituting other containers is likely to cause degraded security and performance, broken chart features, and missing environment variables.\n\nSubstituted images detected:\n  - docker.io/library/postgres:17.9-bookworm\n  - docker.io/debian:13-slim\n  - docker.io/prometheuscommunity/postgres-exporter:v0.19.1\n\n⚠ SECURITY WARNING: Verifying original container images was skipped. Please note this Helm chart was designed, tested, and validated on multiple platforms using a specific set of Bitnami and Bitnami Secure Images containers. Substituting other containers is likely to cause degraded security and performance, broken chart features, and missing environment variables.\n\n",
+              "revision": 1,
+              "values": "{\"authentik\":{\"postgresql\":{\"password\":\"uLpbtgqCUUyKtu2JyufjSQxToa4VA0ChsMWk\"},\"secret_key\":\"cHZGJX7s8LLXMA92nMj60bWIaBczPFXbwqyU0cmdk9kvIoIosspIU9K2kUg9\"},\"global\":{\"env\":[{\"name\":\"AUTHENTIK_BOOTSTRAP_PASSWORD\",\"value\":\"TIOi9bsPwxes0Qk6HVcUaHmm\"},{\"name\":\"AUTHENTIK_BOOTSTRAP_TOKEN\",\"value\":\"OZdzj8BNaFNEfUAHGQEC1PX1y2cDSpZXUJDXNIH09UqRWk6i1WHhoGBgwCZy\"}]},\"postgresql\":{\"auth\":{\"password\":\"uLpbtgqCUUyKtu2JyufjSQxToa4VA0ChsMWk\"},\"enabled\":true},\"server\":{\"service\":{\"nodePortHttp\":30900,\"type\":\"NodePort\"}}}",
+              "version": "2026.2.1"
+            },
+            "name": "authentik",
+            "namespace": "authentik",
+            "pass_credentials": false,
+            "postrender": null,
+            "recreate_pods": false,
+            "render_subchart_notes": true,
+            "replace": false,
+            "repository": "https://charts.goauthentik.io",
+            "repository_ca_file": null,
+            "repository_cert_file": null,
+            "repository_key_file": null,
+            "repository_password": null,
+            "repository_username": null,
+            "reset_values": false,
+            "resources": null,
+            "reuse_values": false,
+            "set": null,
+            "set_list": null,
+            "set_sensitive": null,
+            "set_wo": null,
+            "set_wo_revision": null,
+            "skip_crds": false,
+            "status": "deployed",
+            "take_ownership": false,
+            "timeout": 600,
+            "timeouts": null,
+            "upgrade_install": false,
+            "values": [
+              "\"authentik\":\n  \"postgresql\":\n    \"password\": \"uLpbtgqCUUyKtu2JyufjSQxToa4VA0ChsMWk\"\n  \"secret_key\": \"cHZGJX7s8LLXMA92nMj60bWIaBczPFXbwqyU0cmdk9kvIoIosspIU9K2kUg9\"\n\"global\":\n  \"env\":\n  - \"name\": \"AUTHENTIK_BOOTSTRAP_PASSWORD\"\n    \"value\": \"TIOi9bsPwxes0Qk6HVcUaHmm\"\n  - \"name\": \"AUTHENTIK_BOOTSTRAP_TOKEN\"\n    \"value\": \"OZdzj8BNaFNEfUAHGQEC1PX1y2cDSpZXUJDXNIH09UqRWk6i1WHhoGBgwCZy\"\n\"postgresql\":\n  \"auth\":\n    \"password\": \"uLpbtgqCUUyKtu2JyufjSQxToa4VA0ChsMWk\"\n  \"enabled\": true\n\"server\":\n  \"service\":\n    \"nodePortHttp\": 30900\n    \"type\": \"NodePort\"\n"
+            ],
+            "verify": false,
+            "version": "2026.2.1",
+            "wait": true,
+            "wait_for_jobs": true
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "repository_password"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "values"
+              },
+              {
+                "type": "index",
+                "value": {
+                  "value": 0,
+                  "type": "number"
+                }
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "identity": {
+            "namespace": "authentik",
+            "release_name": "authentik"
+          },
+          "dependencies": [
+            "random_password.all"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.authentik",
+      "mode": "managed",
+      "type": "kubernetes_namespace_v1",
+      "name": "authentik",
+      "provider": "provider[\"registry.terraform.io/hashicorp/kubernetes\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "authentik",
+            "metadata": [
+              {
+                "annotations": {},
+                "generate_name": "",
+                "generation": 0,
+                "labels": {},
+                "name": "authentik",
+                "resource_version": "1650",
+                "uid": "42256848-318c-4e59-96a1-f9b8b35f39f7"
+              }
+            ],
+            "timeouts": null,
+            "wait_for_default_service_account": false
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 1,
+          "identity": {
+            "api_version": "v1",
+            "kind": "Namespace",
+            "name": "authentik"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiZGVsZXRlIjozMDAwMDAwMDAwMDB9fQ=="
+        }
+      ]
+    },
+    {
+      "module": "module.gitea",
+      "mode": "managed",
+      "type": "kubernetes_namespace_v1",
+      "name": "gitea",
+      "provider": "provider[\"registry.terraform.io/hashicorp/kubernetes\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "gitea",
+            "metadata": [
+              {
+                "annotations": null,
+                "generate_name": "",
+                "generation": 0,
+                "labels": null,
+                "name": "gitea",
+                "resource_version": "69987",
+                "uid": "3117b7a4-4adc-45d6-b848-4a8c6adc3cbb"
+              }
+            ],
+            "timeouts": null,
+            "wait_for_default_service_account": false
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 1,
+          "identity": {
+            "api_version": "v1",
+            "kind": "Namespace",
+            "name": "gitea"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiZGVsZXRlIjozMDAwMDAwMDAwMDB9fQ=="
+        }
+      ]
+    },
+    {
+      "module": "module.vault",
+      "mode": "managed",
+      "type": "helm_release",
+      "name": "vault",
+      "provider": "provider[\"registry.terraform.io/hashicorp/helm\"]",
+      "instances": [
+        {
+          "schema_version": 2,
+          "attributes": {
+            "atomic": false,
+            "chart": "vault",
+            "cleanup_on_fail": false,
+            "create_namespace": false,
+            "dependency_update": false,
+            "description": null,
+            "devel": null,
+            "disable_crd_hooks": false,
+            "disable_openapi_validation": false,
+            "disable_webhooks": false,
+            "force_update": false,
+            "id": "vault",
+            "keyring": null,
+            "lint": false,
+            "manifest": null,
+            "max_history": 0,
+            "metadata": {
+              "app_version": "1.21.2",
+              "chart": "vault",
+              "first_deployed": 1773559822,
+              "last_deployed": 1773559822,
+              "name": "vault",
+              "namespace": "vault",
+              "notes": "\nThank you for installing HashiCorp Vault!\n\nNow that you have deployed Vault, you should look over the docs on using\nVault with Kubernetes available here:\n\nhttps://developer.hashicorp.com/vault/docs\n\n\nYour release is named vault. To learn more about the release, try:\n\n  $ helm status vault\n  $ helm get manifest vault\n\n",
+              "revision": 1,
+              "values": "{\"server\":{\"service\":{\"nodePort\":30820,\"type\":\"NodePort\"},\"standalone\":{\"config\":\"ui = true\\r\\nlistener \\\"tcp\\\" {\\r\\n  tls_disable = 1\\r\\n  address     = \\\"[::]:8200\\\"\\r\\n}\\r\\nstorage \\\"file\\\" {\\r\\n  path = \\\"/vault/data\\\"\\r\\n}\\r\\n\",\"enabled\":true}},\"ui\":{\"enabled\":true,\"serviceNodePort\":30821,\"serviceType\":\"NodePort\"}}",
+              "version": "0.32.0"
+            },
+            "name": "vault",
+            "namespace": "vault",
+            "pass_credentials": false,
+            "postrender": null,
+            "recreate_pods": false,
+            "render_subchart_notes": true,
+            "replace": false,
+            "repository": "https://helm.releases.hashicorp.com",
+            "repository_ca_file": null,
+            "repository_cert_file": null,
+            "repository_key_file": null,
+            "repository_password": null,
+            "repository_username": null,
+            "reset_values": false,
+            "resources": null,
+            "reuse_values": false,
+            "set": null,
+            "set_list": null,
+            "set_sensitive": null,
+            "set_wo": null,
+            "set_wo_revision": null,
+            "skip_crds": false,
+            "status": "deployed",
+            "take_ownership": false,
+            "timeout": 300,
+            "timeouts": null,
+            "upgrade_install": false,
+            "values": [
+              "\"server\":\n  \"service\":\n    \"nodePort\": 30820\n    \"type\": \"NodePort\"\n  \"standalone\":\n    \"config\": \"ui = true\\r\\nlistener \\\"tcp\\\" {\\r\\n  tls_disable = 1\\r\\n  address     =\n      \\\"[::]:8200\\\"\\r\\n}\\r\\nstorage \\\"file\\\" {\\r\\n  path = \\\"/vault/data\\\"\\r\\n}\\r\\n\"\n    \"enabled\": true\n\"ui\":\n  \"enabled\": true\n  \"serviceNodePort\": 30821\n  \"serviceType\": \"NodePort\"\n"
+            ],
+            "verify": false,
+            "version": "0.32.0",
+            "wait": true,
+            "wait_for_jobs": false
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "repository_password"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "identity": {
+            "namespace": "vault",
+            "release_name": "vault"
+          },
+          "dependencies": [
+            "module.vault.kubernetes_namespace_v1.vault"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.vault",
+      "mode": "managed",
+      "type": "kubernetes_namespace_v1",
+      "name": "vault",
+      "provider": "provider[\"registry.terraform.io/hashicorp/kubernetes\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "vault",
+            "metadata": [
+              {
+                "annotations": {},
+                "generate_name": "",
+                "generation": 0,
+                "labels": {},
+                "name": "vault",
+                "resource_version": "21748",
+                "uid": "e6f46b43-14dd-4ce8-af94-25d7b2bb8aa3"
+              }
+            ],
+            "timeouts": null,
+            "wait_for_default_service_account": false
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 1,
+          "identity": {
+            "api_version": "v1",
+            "kind": "Namespace",
+            "name": "vault"
+          },
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiZGVsZXRlIjozMDAwMDAwMDAwMDB9fQ=="
+        }
+      ]
+    },
+    {
+      "module": "module.vault",
+      "mode": "managed",
+      "type": "vault_jwt_auth_backend",
+      "name": "oidc",
+      "provider": "provider[\"registry.terraform.io/hashicorp/vault\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "accessor": "auth_oidc_4ce76fd9",
+            "bound_issuer": "",
+            "default_role": "",
+            "description": null,
+            "disable_remount": false,
+            "id": "oidc",
+            "jwks_ca_pem": "",
+            "jwks_pairs": [],
+            "jwks_url": "",
+            "jwt_supported_algs": [],
+            "jwt_validation_pubkeys": [],
+            "local": false,
+            "namespace": null,
+            "namespace_in_state": true,
+            "oidc_client_id": "vault",
+            "oidc_client_secret": "ZD5FFDa3KItQbqQQzVfmqmwyNFClFnVMT346vafgdqsKygcyBO7h8unQYyxpSbWRa7TDSXok5k28dZTHhd6qkleS3h1z3fJVpRNJWFzOkkdLcRZ8qShHrrjnc3wEQcPS",
+            "oidc_client_secret_wo": null,
+            "oidc_client_secret_wo_version": null,
+            "oidc_discovery_ca_pem": "",
+            "oidc_discovery_url": "http://192.168.137.11:30900/application/o/vault/",
+            "oidc_response_mode": "",
+            "oidc_response_types": [],
+            "path": "oidc",
+            "provider_config": {},
+            "tune": [
+              {
+                "allowed_response_headers": [],
+                "audit_non_hmac_request_keys": [],
+                "audit_non_hmac_response_keys": [],
+                "default_lease_ttl": "768h",
+                "listing_visibility": "",
+                "max_lease_ttl": "768h",
+                "passthrough_request_headers": [],
+                "token_type": "default-service"
+              }
+            ],
+            "type": "oidc"
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "oidc_client_secret"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "oidc_client_secret_wo"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "module.vault.helm_release.vault",
+            "module.vault.kubernetes_namespace_v1.vault",
+            "random_password.all"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.vault",
+      "mode": "managed",
+      "type": "vault_jwt_auth_backend_role",
+      "name": "default",
+      "provider": "provider[\"registry.terraform.io/hashicorp/vault\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "alias_metadata": {},
+            "allowed_redirect_uris": [
+              "http://192.168.137.11:30820/ui/vault/auth/oidc/oidc/callback"
+            ],
+            "backend": "oidc",
+            "bound_audiences": [
+              "vault"
+            ],
+            "bound_claims": {},
+            "bound_claims_type": "string",
+            "bound_subject": "",
+            "claim_mappings": null,
+            "clock_skew_leeway": 0,
+            "disable_bound_claims_parsing": false,
+            "expiration_leeway": 0,
+            "groups_claim": "",
+            "id": "auth/oidc/role/default",
+            "max_age": 0,
+            "namespace": null,
+            "not_before_leeway": 0,
+            "oidc_scopes": [],
+            "role_name": "default",
+            "role_type": "oidc",
+            "token_bound_cidrs": [],
+            "token_explicit_max_ttl": 0,
+            "token_max_ttl": 0,
+            "token_no_default_policy": false,
+            "token_num_uses": 0,
+            "token_period": 0,
+            "token_policies": [
+              "default"
+            ],
+            "token_ttl": 0,
+            "token_type": "default",
+            "user_claim": "sub",
+            "user_claim_json_pointer": false,
+            "verbose_oidc_logging": false
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "authentik_provider_oauth2.apps",
+            "data.authentik_flow.default_authorization",
+            "data.authentik_flow.default_invalidation",
+            "module.authentik.helm_release.authentik",
+            "module.authentik.kubernetes_namespace_v1.authentik",
+            "module.vault.helm_release.vault",
+            "module.vault.kubernetes_namespace_v1.vault",
+            "module.vault.vault_jwt_auth_backend.oidc",
+            "random_password.all"
+          ]
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

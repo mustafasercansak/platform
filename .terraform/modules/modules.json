@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"authentik","Source":"./modules/authentik","Dir":"modules/authentik"},{"Key":"gitea","Source":"./modules/gitea","Dir":"modules/gitea"},{"Key":"vault","Source":"./modules/vault","Dir":"modules/vault"}]}
