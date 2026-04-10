@@ -41,20 +41,30 @@ resource "terraform_data" "forgejo_configure_oauth" {
     private_key = local.ssh_connection.private_key
   }
 
+  # Script'i sunucuya yaz — tırnak sorununu tamamen ortadan kaldırır
+  provisioner "file" {
+    content = <<-EOT
+      #!/bin/sh
+      set -e
+      if gitea admin auth list 2>/dev/null | grep -q authentik; then
+        echo "authentik OAuth source already exists, skipping"
+        exit 0
+      fi
+      gitea admin auth add-oauth \
+        --name authentik \
+        --provider openidConnect \
+        --key forgejo \
+        --secret "${authentik_provider_oauth2.forgejo.client_secret}" \
+        --auto-discover-url "http://${var.remote_host}:${local.authentik_http_port}/application/o/forgejo/.well-known/openid-configuration"
+    EOT
+    destination = "/tmp/forgejo_oauth_setup.sh"
+  }
+
   provisioner "remote-exec" {
     inline = [
-      # client_secret'i güvenli şekilde env var olarak geç, shell'de tırnak sorununu önle
-      join(" ", [
-        "sudo docker exec",
-        "-e CLIENT_SECRET='${authentik_provider_oauth2.forgejo.client_secret}'",
-        "forgejo sh -c",
-        "'gitea admin auth list 2>/dev/null | grep -q authentik || gitea admin auth add-oauth",
-        "--name authentik",
-        "--provider openidConnect",
-        "--key forgejo",
-        "--secret \"$CLIENT_SECRET\"",
-        "--auto-discover-url http://${var.remote_host}:${local.authentik_http_port}/application/o/forgejo/.well-known/openid-configuration'",
-      ]),
+      "sudo docker cp /tmp/forgejo_oauth_setup.sh forgejo:/tmp/forgejo_oauth_setup.sh",
+      "sudo docker exec forgejo sh /tmp/forgejo_oauth_setup.sh",
+      "rm -f /tmp/forgejo_oauth_setup.sh",
     ]
   }
 

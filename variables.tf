@@ -36,17 +36,17 @@ variable "portainer_url" {
 
 variable "forgejo_http_port" {
   type    = number
-  default = 3000
+  default = 3001
 }
 
 variable "forgejo_ssh_port" {
   type    = number
-  default = 2222
+  default = 2223
 }
 
 variable "forgejo_url" {
   type    = string
-  default = "http://192.170.6.11:3000"
+  default = "http://192.170.6.11:3001"
 }
 
 variable "forgejo_admin_user" {

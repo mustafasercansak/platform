@@ -84,6 +84,9 @@ resource "terraform_data" "forgejo_deploy" {
 
   provisioner "remote-exec" {
     inline = [
+      "sudo docker rm -f forgejo 2>/dev/null || true",
+      "sudo docker network rm forgejo_default 2>/dev/null || true",
+      "sudo docker ps -q --filter publish=${var.forgejo_http_port} | xargs -r sudo docker rm -f 2>/dev/null || true",
       "sudo docker-compose -f /opt/${local.forgejo_app}/compose.yml up -d",
     ]
   }
