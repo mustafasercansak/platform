@@ -5,3 +5,5 @@ terraform.rc
 *.tfvars.json
 *.tfstate
 *.tfstate.backup
+/images*
+crane*
