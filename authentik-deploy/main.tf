@@ -1,9 +1,23 @@
-locals {
-  authentik_app        = "authentik"
-  authentik_http_port  = 9000
-  authentik_https_port = 9443
+terraform {
+  required_providers {
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.0"
+    }
+  }
 }
 
+locals {
+  authentik_app = "authentik"
+  ssh_connection = {
+    type        = "ssh"
+    user        = var.remote_user
+    host        = var.remote_host
+    private_key = file(var.ssh_private_key_path)
+  }
+}
+
+# Credentials
 resource "random_password" "pg_pass" {
   length  = 36
   special = false
@@ -34,13 +48,13 @@ output "authentik_credentials" {
   sensitive = true
 }
 
+# Deployment
 resource "terraform_data" "authentik_deploy" {
-  # Şifreler veya portlar değişirse yeniden deploy et
   triggers_replace = [
     random_password.pg_pass.result,
     random_password.secret_key.result,
-    local.authentik_http_port,
-    local.authentik_https_port,
+    var.authentik_http_port,
+    var.authentik_https_port,
   ]
 
   connection {
@@ -52,9 +66,10 @@ resource "terraform_data" "authentik_deploy" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo mkdir -p /opt/${local.authentik_app}",
-      "sudo chown ${var.remote_user}:${var.remote_user} /opt/${local.authentik_app}",
-      "sudo chmod 755 /opt/${local.authentik_app}",
+      "echo '🚀 Dizin hazırlığı...'",
+      "sudo mkdir -p ${var.authentik_app_path}",
+      "sudo chown ${var.remote_user}:${var.remote_user} ${var.authentik_app_path}",
+      "sudo chmod 755 ${var.authentik_app_path}",
     ]
   }
 
@@ -64,23 +79,14 @@ resource "terraform_data" "authentik_deploy" {
       AUTHENTIK_SECRET_KEY=${random_password.secret_key.result}
       AUTHENTIK_BOOTSTRAP_PASSWORD=${random_password.bootstrap_password.result}
       AUTHENTIK_BOOTSTRAP_TOKEN=${random_password.bootstrap_token.result}
-      COMPOSE_PORT_HTTP=${local.authentik_http_port}
-      COMPOSE_PORT_HTTPS=${local.authentik_https_port}
+      COMPOSE_PORT_HTTP=${var.authentik_http_port}
+      COMPOSE_PORT_HTTPS=${var.authentik_https_port}
     EOT
     destination = "/tmp/.authentik.env"
   }
 
-  provisioner "remote-exec" {
-    inline = [
-      "sudo mv /tmp/.authentik.env /opt/${local.authentik_app}/.env",
-      "sudo chown ${var.remote_user}:${var.remote_user} /opt/${local.authentik_app}/.env",
-      "sudo chmod 600 /opt/${local.authentik_app}/.env",
-    ]
-  }
-
   provisioner "file" {
     content     = <<-EOT
-    # Authentik 2026.2.1 - No Redis Required (PostgreSQL handles tasks/cache)
     services:
       postgresql:
         image: docker.io/library/postgres:16-alpine
@@ -111,6 +117,8 @@ resource "terraform_data" "authentik_deploy" {
           AUTHENTIK_POSTGRESQL__USER: $${PG_USER:-authentik}
           AUTHENTIK_POSTGRESQL__PASSWORD: $${PG_PASS}
           AUTHENTIK_SECRET_KEY: $${AUTHENTIK_SECRET_KEY:?secret key required}
+          AUTHENTIK_BOOTSTRAP_PASSWORD: $${AUTHENTIK_BOOTSTRAP_PASSWORD}
+          AUTHENTIK_BOOTSTRAP_TOKEN: $${AUTHENTIK_BOOTSTRAP_TOKEN}
         ports:
           - "$${COMPOSE_PORT_HTTP:-9000}:9000"
           - "$${COMPOSE_PORT_HTTPS:-9443}:9443"
@@ -149,15 +157,15 @@ resource "terraform_data" "authentik_deploy" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo mv /tmp/.authentik.compose.yml /opt/${local.authentik_app}/compose.yml",
-      "sudo chown ${var.remote_user}:${var.remote_user} /opt/${local.authentik_app}/compose.yml",
-      "sudo chmod 600 /opt/${local.authentik_app}/compose.yml",
-    ]
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo docker-compose -f /opt/${local.authentik_app}/compose.yml up -d",
+      "echo '🚀 Dosyalar yerleştiriliyor...'",
+      "sudo mv /tmp/.authentik.env ${var.authentik_app_path}/.env",
+      "sudo mv /tmp/.authentik.compose.yml ${var.authentik_app_path}/compose.yml",
+      "sudo chown ${var.remote_user}:${var.remote_user} ${var.authentik_app_path}/.env ${var.authentik_app_path}/compose.yml",
+      "sudo chmod 600 ${var.authentik_app_path}/.env ${var.authentik_app_path}/compose.yml",
+      "echo '🚀 Docker konteynerları başlatılıyor...'",
+      "cd ${var.authentik_app_path} && sudo docker-compose up -d",
+      "echo '✅ Kurulum tamamlandı! Authentik başlatıldı.'",
+      "echo '🔗 Erişim: http://${var.remote_host}:${var.authentik_http_port}'"
     ]
   }
 }

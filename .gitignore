@@ -1,9 +1,50 @@
-/.terraform*
+# --- Terraform ---
+.terraform/
 .terraformrc
 terraform.rc
 *.tfvars
 *.tfvars.json
 *.tfstate
 *.tfstate.backup
+*.tfstate.lock.info
+*.tfplan
+.terraform.lock.hcl
+
+# --- Images & Local Binaries ---
 /images*
 crane*
+*.exe
+*.dll
+*.so
+*.dylib
+
+# --- IDEs & Editors ---
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.swp
+*.swo
+
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Secrets & Local Configs ---
+.env
+.env.*
+! .env.example
+*.pfx
+*.pem
+*.key
+auth.json
+
+# --- Logs & Performance ---
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.terraform.lock.hcl

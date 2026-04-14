@@ -1,7 +1,7 @@
 param(
-    [string]$ImagesDir    = ".\images",
+    [string]$ImagesDir = ".\images",
     [string]$RemoteTarget = "vys@192.170.6.11",
-    [string]$RemoteDir    = "/opt/images"
+    [string]$RemoteDir = "/opt/images"
 )
 
 $scp = Get-Command scp.exe -ErrorAction Stop | Select-Object -ExpandProperty Source
@@ -44,5 +44,5 @@ foreach ($tar in $tars) {
     $success++
 }
 
-Write-Host "`n📊 Sonuç: $success başarılı, $fail başarısız." -ForegroundColor White
-exit ($fail -gt 0 ? 1 : 0)
+Write-Host "`n Sonuc: $success basarili, $fail basarisiz." -ForegroundColor White
+if ($fail -gt 0) { exit 1 } else { exit 0 }

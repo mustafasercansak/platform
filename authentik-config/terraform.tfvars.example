@@ -1,0 +1,2 @@
+authentik_url   = "http://192.170.6.11:9000"
+authentik_token = "BURAYA_BOOTSTRAP_TOKEN_GELECEK"

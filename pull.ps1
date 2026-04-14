@@ -46,5 +46,5 @@ foreach ($img in $images) {
     }
 }
 
-Write-Host "`n📊 Tamamlandı: $success indirildi, $skip atlandı, $fail başarısız." -ForegroundColor White
-exit ($fail -gt 0 ? 1 : 0)
+Write-Host "`n Tamamlandi: $success indirildi, $skip atlandi, $fail basarisiz." -ForegroundColor White
+if ($fail -gt 0) { exit 1 } else { exit 0 }

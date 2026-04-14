@@ -1,0 +1,8 @@
+# Uzak Sunucu Bilgileri
+remote_host          = "192.170.6.11"
+ssh_private_key_path = "~/.ssh/id_rsa"
+
+# Authentik OIDC Bilgileri (authentik-config projesinden alınmalı)
+authentik_url      = "http://192.170.6.11:9000"
+oidc_client_id     = "portainer"
+oidc_client_secret = "BURAYA_CLIENT_SECRET_GELECEK"
